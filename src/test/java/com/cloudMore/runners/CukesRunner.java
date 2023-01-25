@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
 		},
 		features = "src/test/resources/features",
 		glue = "com/cloudMore/step_definitions",
-		dryRun = false,
-		tags = "@TC2Negative"
+		dryRun = true,
+		tags = "@PartC"
 )
 
 public class CukesRunner {
