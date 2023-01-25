@@ -4,6 +4,10 @@ import com.cloudMore.pojos.UserCreationsPojo;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import org.hamcrest.Matchers;
+
 
 public class ApiStepDef {
 
@@ -31,6 +35,7 @@ public class ApiStepDef {
        userCreationsPojo.setEmail(email);
        userCreationsPojo.setPassword(password);
        userCreationsPojo.setPhone(phone);
+       userCreationsPojo.setUserStatus(userStatus);
 
        System.out.println("userCreationsPojo = " + userCreationsPojo);
 
@@ -38,7 +43,12 @@ public class ApiStepDef {
     @Then("User can create account")
     public void user_can_create_account() {
 
-
+        RestAssured.given().accept(ContentType.JSON).
+                and().contentType(ContentType.JSON).
+                and().body(userCreationsPojo).
+                when().post("https://petstore.swagger.io/v2/user/createWithList").
+                then().statusCode(200).log().body().
+                assertThat().body("type",Matchers.is("ok"),"code",Matchers.is(200));
 
     }
 
