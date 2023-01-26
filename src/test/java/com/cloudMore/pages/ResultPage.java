@@ -1,5 +1,7 @@
 package com.cloudMore.pages;
 
+import com.cloudMore.utilities.Driver;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,4 +19,10 @@ public class ResultPage extends BasePage {
         }
         return false;
     }
+
+    public void mobilScreenShot(int x, int y){
+        Driver.getDriver().manage().window().setSize(new Dimension(x, y));
+    }
+
+
 }
