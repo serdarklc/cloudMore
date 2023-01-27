@@ -103,7 +103,7 @@ public class ApiStepDef {
     }
     @Then("User information should be deleted")
     public void user_information_should_be_deleted() {
-        assertThat(jsonPath.getString("username"),is(null));
+        response.then().assertThat().body("firstName",is(null));
     }
 
 }
