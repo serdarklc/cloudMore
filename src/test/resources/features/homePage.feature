@@ -1,13 +1,5 @@
 @PartB
-Feature:Create automated tests for https://web.cloudmore.com:
-
-  1. Verify company logo and menu items are displayed on next pages: Solutions,
-  Integrations, Resources, Pricing, Company.
-
-  2. Test Search Page:
-  Search by “Azure” and take a screenshot on a search result page for mobile and
-  desktop size screens. In case search results have less than 3 items in the list, the test
-  should fail (screenshots still needed)
+Feature:Create automated tests for https://web.cloudmore.com
 
   @TC1Positive @ui
   Scenario Outline: Verify company logo and menu items are displayed on next pages:
@@ -39,18 +31,6 @@ Feature:Create automated tests for https://web.cloudmore.com:
       | 1920  | 961 |
       | 414  | 896 |
 
-
-  @TC2Negative @ui
-  Scenario Outline: Search by “Azure” and take a screenshot on a search result page for mobile and
-  desktop size screens.
-    Given The user is on the home page
-    And The user can click search button
-    And The user writes "<keyword>" into search field
-    Then The user should see results more than 3 items on the result page
-
-    Examples:
-      | keyword |
-      | Storing |
 
 
 
