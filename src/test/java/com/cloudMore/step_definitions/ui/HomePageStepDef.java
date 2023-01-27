@@ -1,23 +1,15 @@
-package com.cloudMore.step_definitions;
+package com.cloudMore.step_definitions.ui;
 
 import com.cloudMore.pages.HomePage;
-import com.cloudMore.utilities.Driver;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.plugin.event.Node;
 import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 @Log4j
 public class HomePageStepDef {
-
     private HomePage homePage = new HomePage();
 
-    //----------------------------------------------------------------
     @Given("The user is on the home page")
     public void the_user_is_on_the_home_page() {
         log.info("Navigating to home page");

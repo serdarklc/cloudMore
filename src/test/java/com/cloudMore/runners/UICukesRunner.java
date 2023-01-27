@@ -11,12 +11,12 @@ import org.junit.runner.RunWith;
 				  "json:target/cucumber.json",
 				  "rerun:target/rerun.txt"
 		},
-		features = "src/test/resources/features",
-		glue = "com/cloudMore/step_definitions",
+		features = "src/test/resources/features/ui",
+		glue = "com/cloudMore/step_definitions/ui",
 		dryRun = false,
-		tags = "@PartC1"
+		tags = "@UI"
 )
 
-public class CukesRunner {
+public class UICukesRunner {
 
 }

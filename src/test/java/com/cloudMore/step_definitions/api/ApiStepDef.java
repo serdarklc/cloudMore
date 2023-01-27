@@ -1,4 +1,4 @@
-package com.cloudMore.step_definitions;
+package com.cloudMore.step_definitions.api;
 
 import com.cloudMore.pojos.User;
 import com.cloudMore.utilities.ConfigurationReader;
@@ -26,20 +26,14 @@ public class ApiStepDef {
     public static void init() {
         baseURI = ConfigurationReader.get("apiUrl");
     }
-
-    User user;
-    Faker faker = new Faker();
-    Object[] array = {user};
+    User user = User.getInstance();
     Response response;
     JsonPath jsonPath;
+    User[] array = new User[]{user};
 
     @Given("User information should be written randomly")
     public void user_information_should_be_written_randomly() {
-        user = User.builder().id(faker.number().randomDigitNotZero()).username(faker.name().username()).firstName(faker.name().firstName()).
-                lastName(faker.name().lastName()).email(faker.internet().emailAddress()).password(faker.internet().password()).
-                phone(faker.numerify("###########")).userStatus(0).build();
 
-        System.out.println("array = " + Arrays.asList(array));
     }
 
     @When("User should post information")
@@ -86,7 +80,7 @@ public class ApiStepDef {
     @When("User send a update request with username")
     public void user_send_a_update_request_with_username() {
 
-        array[2] = "Jack";
+        user.setFirstName("Jack");
 
         response = given().accept(ContentType.JSON).
                 body(array).
@@ -102,7 +96,7 @@ public class ApiStepDef {
     }
     @Then("User information should be deleted")
     public void user_information_should_be_deleted() {
-        assertThat(jsonPath.getInt("id"),is(null));
+        assertThat(jsonPath.getString("username"),is(null));
     }
 
 }

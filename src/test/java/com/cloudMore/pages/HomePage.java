@@ -4,33 +4,24 @@ import com.cloudMore.utilities.BrowserUtils;
 import com.cloudMore.utilities.ConfigurationReader;
 import com.cloudMore.utilities.Driver;
 import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
 @Log4j
 public class HomePage extends BasePage {
-
     @FindBy(xpath = "//a[@class ='navbar-brand']/img")
     private WebElement logo;
-
     @FindBy(id = "hs-eu-confirmation-button")
     private WebElement cookiesAcceptButton;
-
     @FindBy(css = "button.btn-search")
     private WebElement searchButton;
-
     @FindBy(xpath = "//input[@class ='input-search']")
     private WebElement searchField;
 
     public void searchButtonClick() {
-        BrowserUtils.clickWithWait(searchButton,10);
+        BrowserUtils.clickWithWait(searchButton, 10);
     }
 
     public void searchByKeyword(String keyword) {
@@ -64,8 +55,6 @@ public class HomePage extends BasePage {
         }
         return false;
     }
-
-
 }
 
 

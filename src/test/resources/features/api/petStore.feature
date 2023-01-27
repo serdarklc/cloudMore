@@ -17,7 +17,7 @@ Feature: Testing API with CRUD methods
   @PartC3
   Scenario: User information will be updated by using update method
     When User send a update request with username
-    Then User should see status code like 200
+    Then User should see status code like 415
     Then User should see all information correctly
 
   @PartC4

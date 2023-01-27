@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -14,17 +13,17 @@ import java.util.Set;
 public class BrowserUtils {
 
 
-    public static void sleep(int second){
-        second *=1000;
+    public static void sleep(int second) {
+        second *= 1000;
         try {
             Thread.sleep(second);
-        }catch (InterruptedException e ) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public static void clickWithTryCatch(By locator){
-        waitClickability(locator,5);
+    public static void clickWithTryCatch(By locator) {
+        waitClickability(locator, 5);
         try {
             Driver.getDriver().findElement(locator).click();
         } catch (Exception e) {
@@ -41,7 +40,7 @@ public class BrowserUtils {
 
     }
 
-    public static String getURL(){
+    public static String getURL() {
         return Driver.getDriver().getCurrentUrl();
     }
 
@@ -66,30 +65,30 @@ public class BrowserUtils {
     }
 
     //wait for clickability of an element then click
-    public static void clickWithWait(WebElement element, int timeOut){
-        waitForVisibility(element,timeOut);
-        waitClickability(element,timeOut);
+    public static void clickWithWait(WebElement element, int timeOut) {
+        waitForVisibility(element, timeOut);
+        waitClickability(element, timeOut);
         element.click();
     }
 
     //wait for clickability of an element then click
-    public static void clickWithWait(By by, int timeOut){
-        waitClickability(by,timeOut);
+    public static void clickWithWait(By by, int timeOut) {
+        waitClickability(by, timeOut);
         Driver.getDriver().findElement(by).click();
     }
 
-    public static void clickWithMouseHoverAction(WebElement element){
+    public static void clickWithMouseHoverAction(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).pause(500).click(element).build().perform();
     }
 
-    public static void waitUntilNumberOfWindows(int number){
+    public static void waitUntilNumberOfWindows(int number) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
         wait.until(ExpectedConditions.numberOfWindowsToBe(number));
     }
 
-    public static void sendKeysWithWait(WebElement field, String text, int timeOut){
-        waitClickability(field,timeOut);
+    public static void sendKeysWithWait(WebElement field, String text, int timeOut) {
+        waitClickability(field, timeOut);
         field.sendKeys(text);
     }
 
