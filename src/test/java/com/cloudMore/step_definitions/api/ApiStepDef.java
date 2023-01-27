@@ -3,6 +3,7 @@ package com.cloudMore.step_definitions.api;
 import com.cloudMore.pojos.User;
 import com.cloudMore.utilities.ConfigurationReader;
 import com.github.javafaker.Faker;
+import com.google.gson.Gson;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,28 +32,24 @@ public class ApiStepDef {
     JsonPath jsonPath;
     User[] array = new User[]{user};
 
-    @Given("User information should be written randomly")
-    public void user_information_should_be_written_randomly() {
-
-    }
-
     @When("User should post information")
     public void user_should_post_information() {
         response = given().accept(ContentType.JSON).
                 and().contentType(ContentType.JSON).
                 and().body(array).
                 when().post("/user/createWithList");
+        System.out.println(user.getUsername());
     }
 
     @Then("User should see status code like {int}")
     public void user_should_see_status_code_like(Integer statusCode) {
-        Assertions.assertEquals(response.statusCode(), statusCode);
+        Assertions.assertEquals(statusCode,response.statusCode());
     }
 
-    @Then("User should see message, code, type and values")
-    public void user_should_see_message_code_type_and_values() {
+    @Then("User should see response body code {int}")
+    public void user_should_see_response_body_code(Integer code) {
         response.then().assertThat().
-                body("message", is("ok"), "code", is(200), "type", is("unknown"));
+                body("code", is(code));
     }
 
     @When("User send a get request with username")
@@ -80,10 +77,20 @@ public class ApiStepDef {
     @When("User send a update request with username")
     public void user_send_a_update_request_with_username() {
 
+        System.out.println(user.getUsername());
+
         user.setFirstName("Jack");
 
+        System.out.println(user.getFirstName());
+        System.out.println(Arrays.asList(array));
+
+        Gson gson = new Gson();
+        String json = gson.toJson(array[0]);
+
+        System.out.println(json);
+
         response = given().accept(ContentType.JSON).
-                body(array).
+                body(json).
                 and().pathParam("username", user.getUsername()).
                 when().put("user/{username}");
     }

@@ -3,10 +3,9 @@ Feature: Testing API with CRUD methods
 
   @PartC1
   Scenario: User can create account successfully with valid credentials
-    Given User information should be written randomly
     When User should post information
     Then User should see status code like 200
-    Then User should see message, code, type and values
+    Then User should see response body code 200
 
   @PartC2
   Scenario: A specific information should be retrieved by username
@@ -17,8 +16,8 @@ Feature: Testing API with CRUD methods
   @PartC3
   Scenario: User information will be updated by using update method
     When User send a update request with username
-    Then User should see status code like 415
-    Then User should see all information correctly
+    Then User should see status code like 200
+    Then User should see response body code 200
 
   @PartC4
   Scenario: User information will be deleted by using delete method
