@@ -1,9 +1,15 @@
 package com.cloudMore.utilities;
 
+import io.restassured.response.Response;
+
+
+import org.hamcrest.MatcherAssert;
 
 
 public class ApiUtilPetStore {
-    public static void createUser(String email,String password) {
+
+    protected Response response;
+    protected void assertStatus200(){
 
     }
 

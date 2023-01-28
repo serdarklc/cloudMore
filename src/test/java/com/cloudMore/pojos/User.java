@@ -10,7 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
-
 public class User {
     private int id;
     private String username;
@@ -21,8 +20,10 @@ public class User {
     private String phone;
     private int userStatus;
 
-    public static User getInstance(){
-        if (user == null){
+    private static User user;
+
+    public static User getInstance() {
+        if (user == null) {
             Faker faker = new Faker();
             user = User.builder().id(faker.number().randomDigitNotZero()).username(faker.name().username()).firstName(faker.name().firstName()).
                     lastName(faker.name().lastName()).email(faker.internet().emailAddress()).password(faker.internet().password()).
@@ -30,7 +31,5 @@ public class User {
         }
         return user;
     }
-    private static User user;
-
 }
 
