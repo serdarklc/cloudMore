@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 		features = "src/test/resources/features/api",
 		glue = "com/cloudMore/step_definitions/api",
 		dryRun = false,
-		tags = "@API"
+		tags = "@CreatingNegative"
 )
 
 public class APICukesRunner {

@@ -91,4 +91,32 @@ public class ApiStepDef {
     public void user_information_should_be_deleted() {
         response.then().assertThat().body("message", is(user.getUsername()));
     }
+
+    @When("User send a get request with invalid {string}")
+    public void user_send_a_get_request_with_invalid(String userName) {
+        response = given().accept(ContentType.JSON).
+                and().pathParam("username", userName).
+                when().get("user/{username}");
+    }
+
+    @When("User send a delete request with invalid {string}")
+    public void user_send_a_delete_request_with_invalid(String userName) {
+        response = given().accept(ContentType.JSON).
+                and().pathParam("username", userName).
+                when().delete("user/{username}");
+    }
+
+    @When("User should post invalid information")
+    public void user_should_post_invalid_information() {
+        user.setUsername("12345% &");
+        response = given().accept(ContentType.JSON).
+                and().contentType(ContentType.JSON).
+                and().body(array).
+                when().post("/user/createWithList");
+    }
+
+    @Then("User cannot see status code like {int}")
+    public void user_cannot_see_status_code_like(Integer statusCode) {
+        Assertions.assertFalse(statusCode == response.statusCode());
+    }
 }
