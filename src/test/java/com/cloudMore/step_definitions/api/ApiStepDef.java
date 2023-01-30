@@ -2,21 +2,13 @@ package com.cloudMore.step_definitions.api;
 
 import com.cloudMore.pojos.User;
 import com.cloudMore.utilities.ConfigurationReader;
-import com.github.javafaker.Faker;
-import com.google.gson.Gson;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
-
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.*;
