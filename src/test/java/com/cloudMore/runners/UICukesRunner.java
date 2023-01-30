@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 		glue = "com/cloudMore/step_definitions/ui",
 		dryRun = false,
 		publish = true,
-		tags = "@UI"
+		tags = "@TC2Desktop and @ui"
 )
 
 public class UICukesRunner {
