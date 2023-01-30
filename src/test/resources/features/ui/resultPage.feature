@@ -1,5 +1,5 @@
 @UI
-Feature:Create automated tests for https://web.cloudmore.com
+Feature:Create automated tests for result page
 
   Background:
     Given The user is on the home page

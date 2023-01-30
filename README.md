@@ -42,3 +42,13 @@ All OOP principles are implemented.
 ![Lombok](src/test/resources/images/libraries/lombok.png?raw=true)
 ![Rest Assured](src/test/resources/images/libraries/restassured.png?raw=true)
 ![Selenium Web Driver](src/test/resources/images/libraries/selenium_web_driver.png?raw=true)
+
+## Fancy Cucumber HTML reports
+## UI
+![UI_ReportofFeature](src/test/resources/images/reportsScreenShots/UI_ReportViaFeatures.jpg)
+![UI_ReportofSteps](src/test/resources/images/reportsScreenShots/UI_ReportViaSteps.jpg)
+![UI_ReportofTags](src/test/resources/images/reportsScreenShots/UI_ReportViaTags.jpg)
+## API
+![API_ReportofFeatures](src/test/resources/images/reportsScreenShots/API_ReportViaFeature.jpg)
+![API_ReportofSteps](src/test/resources/images/reportsScreenShots/API_ReportViaSteps.jpg)
+![API_ReportofTags](src/test/resources/images/reportsScreenShots/API_ReportViaTags.jpg)
