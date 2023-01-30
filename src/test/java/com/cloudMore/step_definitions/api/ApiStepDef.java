@@ -107,8 +107,20 @@ public class ApiStepDef {
                 when().post("/user/createWithList");
     }
 
-    @Then("User cannot see status code like {int}")
-    public void user_cannot_see_status_code_like(Integer statusCode) {
-        Assertions.assertFalse(statusCode == response.statusCode());
+    @When("User send a update request with invalid {string}")
+    public void user_send_a_update_request_with_invalid(String username) {
+        response = given().accept(ContentType.JSON).
+                and().contentType(ContentType.JSON).
+                body(username).
+                and().pathParam("username", username).
+                when().put("user/{username}");
+    }
+
+    @When("User should post invalid {string}")
+    public void user_should_post_invalid(String information) {
+        response = given().accept(ContentType.JSON).
+                and().contentType(ContentType.JSON).
+                and().body(information).
+                when().post("/user/createWithList");
     }
 }

@@ -26,16 +26,38 @@ Feature: Testing API with CRUD methods
     Then User information should be deleted
     Then User should see status code like 200
 
-  #@CreatingNegative
-  #Scenario: User cannot create account with invalid credentials
-  #  When User should post invalid information
-  #  Then User cannot see status code like 200
+  @CreatingNegative
+  Scenario Outline: User cannot create account with invalid credentials
+    When User should post invalid "<information>"
+    Then User should see status code like 400
 
-  @Updating
-  Scenario: User information will be updated by using update method
-    When User send a update request with username
-    Then User should see status code like 200
-    Then User should see response body code 200
+    Examples:
+      | information |
+      | Jennifer    |
+      | Jackyy      |
+      | Ja%ck       |
+      | j1Ak        |
+      | 123asD      |
+      | 123w45      |
+      | 123W45      |
+      | 12%&/       |
+
+  @UpdatingNegative
+  Scenario Outline: User information cannot be updated by using update method with invalid credentials
+    When User send a update request with invalid "<username>"
+    Then User should see status code like 400
+    Then User should see response body code 400
+
+    Examples:
+      | username |
+      | Jennifer |
+      | Jackyy   |
+      | Ja%ck    |
+      | j1Ak     |
+      | 123asD   |
+      | 123w45   |
+      | 123W45   |
+      | 12%&/    |
 
   @ReadingNegative
   Scenario Outline: A specific information should not be retrieved by invalid username
@@ -45,7 +67,8 @@ Feature: Testing API with CRUD methods
 
     Examples:
       | username |
-      | Jackyy    |
+      | Jennifer |
+      | Jackyy   |
       | Ja%ck    |
       | j1Ak     |
       | 123asD   |
@@ -60,7 +83,8 @@ Feature: Testing API with CRUD methods
 
     Examples:
       | username |
-      | 123 45    |
+      | Jennifer |
+      | 123 45   |
       | 12345    |
       | j12%3 4  |
       | jAcK     |

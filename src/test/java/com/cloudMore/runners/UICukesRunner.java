@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 		features = "src/test/resources/features/ui",
 		glue = "com/cloudMore/step_definitions/ui",
 		dryRun = false,
+		publish = true,
 		tags = "@UI"
 )
 
