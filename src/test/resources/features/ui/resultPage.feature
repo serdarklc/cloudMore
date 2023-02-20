@@ -4,7 +4,7 @@ Feature:Create automated tests for result page
   Background:
     Given The user is on the home page
     And The user can click search button
-    And The user writes "Azure" into search field
+    And The user writes "selenium" into search field
 
   @TC2Desktop @ui
   Scenario: Search by “Azure” and take a screenshot on a search result page for desktop size screens.

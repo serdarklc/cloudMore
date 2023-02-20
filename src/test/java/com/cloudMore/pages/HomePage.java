@@ -41,6 +41,7 @@ public class HomePage extends BasePage {
         if (logo.isDisplayed()) {
             return true;
         }
+        System.out.println("logo is not displayed");
         return false;
     }
 

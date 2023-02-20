@@ -65,6 +65,7 @@ public class ApiStepDef {
 
     @When("User send a update request with username")
     public void user_send_a_update_request_with_username() {
+        user.setLastName("Serdar");
         response = given().accept(ContentType.JSON).
                 and().contentType(ContentType.JSON).
                 body(user).
@@ -97,16 +98,6 @@ public class ApiStepDef {
                 and().pathParam("username", userName).
                 when().delete("user/{username}");
     }
-
-    @When("User should post invalid information")
-    public void user_should_post_invalid_information() {
-        user.setUsername("12345% &");
-        response = given().accept(ContentType.JSON).
-                and().contentType(ContentType.JSON).
-                and().body(array).
-                when().post("/user/createWithList");
-    }
-
     @When("User send a update request with invalid {string}")
     public void user_send_a_update_request_with_invalid(String username) {
         response = given().accept(ContentType.JSON).

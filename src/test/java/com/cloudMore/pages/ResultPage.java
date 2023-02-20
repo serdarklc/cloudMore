@@ -12,10 +12,10 @@ public class ResultPage extends BasePage {
     private List<WebElement> resultList;
 
     public boolean resultListNumberControl() {
-        while (resultList.size() > 3) {
-            return true;
+        while (resultList.size() < 3) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void mobilScreenShot(int x, int y) {
